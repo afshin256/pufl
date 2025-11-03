@@ -1,0 +1,288 @@
+/* ======================
+   متغیرهای رنگ و فونت
+   ====================== */
+:root {
+  --color-primary: #2e7d32;      /* سبز پایه (بیوتک/طبیعت) */
+  --color-primary-light: #4caf50;
+  --color-dark: #1b5e20;
+  --color-text: #333;
+  --color-text-light: #666;
+  --color-bg: #fafafa;
+  --color-white: #ffffff;
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --border-radius: 8px;
+  --font-heading: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+  --font-body: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+  --font-en: 'Segoe UI', Tahoma, Helvetica, sans-serif;
+  --transition: all 0.3s ease;
+}
+
+/* فونت فارسی — از CDN Vazirmatn استفاده شود */
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+/* ======================
+   ریست عمومی
+   ====================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  direction: rtl;
+}
+
+html[dir="ltr"] body {
+  direction: ltr;
+}
+
+/* ======================
+   کامپوننت‌های کلی
+   ====================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.headline {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+}
+
+.subheadline {
+  font-size: 1.25rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.text {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: var(--transition);
+  border: 2px solid var(--color-primary);
+}
+
+.btn:hover {
+  background-color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  margin-right: 1rem;
+}
+
+html[dir="ltr"] .btn-outline {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* ======================
+   زبان‌ها
+   ====================== */
+.lang-switcher {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 0.5rem;
+}
+
+html[dir="ltr"] .lang-switcher {
+  left: auto;
+  right: 1rem;
+}
+
+.lang-switcher button {
+  padding: 0.4rem 0.8rem;
+  background: var(--color-white);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.lang-switcher button:hover {
+  background: #f0f0f0;
+}
+
+/* ======================
+   Hero Section
+   ====================== */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+              url('https://via.placeholder.com/1600x600/2e7d32/ffffff?text=Mushroom+Cultivation') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.hero .headline,
+.hero .subheadline {
+  color: white;
+}
+
+.hero .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ======================
+   Content Sections
+   ====================== */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.content-wrapper.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+html[dir="ltr"] .content-wrapper.reverse {
+  grid-template-areas: "img text";
+}
+
+.image-placeholder {
+  background-color: #e8f5e9;
+  border: 1px dashed #a5d6a7;
+  border-radius: var(--border-radius);
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+/* تصاویر واقعی (اختیاری): */
+/*
+.image-placeholder[data-img="about"] {
+  background-image: url('/images/lab-team.jpg');
+  background-size: cover;
+  background-position: center;
+}
+*/
+
+/* ======================
+   Footer / Contact
+   ====================== */
+.footer {
+  background-color: var(--color-primary);
+  color: white;
+  text-align: center;
+}
+
+.footer .headline,
+.footer .text,
+.footer p,
+.footer a {
+  color: white;
+}
+
+.footer a {
+  color: #b2ff59;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.social-links {
+  margin: 1.5rem 0;
+}
+
+.social-links a {
+  margin: 0 0.8rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* ======================
+   رسانه‌های پاسخ‌گو (Responsive)
+   ====================== */
+@media (max-width: 768px) {
+  .headline {
+    font-size: 1.8rem;
+  }
+
+  .subheadline {
+    font-size: 1.1rem;
+  }
+
+  .content-wrapper,
+  .content-wrapper.reverse {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  html[dir="ltr"] .content-wrapper,
+  html[dir="ltr"] .content-wrapper.reverse {
+    text-align: center;
+  }
+
+  .hero {
+    padding: 4rem 1rem;
+  }
+
+  .btn-outline {
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .lang-switcher {
+    top: 0.8rem;
+    left: 0.8rem;
+    flex-direction: row;
+  }
+
+  html[dir="ltr"] .lang-switcher {
+    right: 0.8rem;
+  }
+}
+
+/* فونت انگلیسی در حالت LTR */
+html[dir="ltr"] {
+  font-family: var(--font-en);
+}
+
+html[dir="ltr"] .headline,
+html[dir="ltr"] .subheadline,
+html[dir="ltr"] .text {
+  text-align: left;
+  font-family: var(--font-en);
+}
