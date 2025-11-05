@@ -1,245 +1,462 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl" id="html-root">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MycoNova | آینده پرورش قارچ در بسترهای مصنوعی</title>
-  <meta name="description" content="فرمول انحصاری MGF-01 مایکونووا، نخستین محلول مغذی با خاصیت ضدآلودگی برای رشد قارچ بدون کمپوست و بدون استریل — از شهر تا فضا." />
-  <!-- فونت فارسی -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-  <!-- CSS خواهد آمد در پاسخ بعدی -->
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MycoFlair | تیم تحقیقاتی و توسعه مایکوفِلِر</title>
+  <meta name="description" content="MycoFlair — Innovating the Future of Fungal Biotechnology. فرمول MGF-02 برای پرورش قارچ روی بسترهای مصنوعی" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#6ee7b7;
+      --accent-2:#7dd3fc;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --glass-border: rgba(255,255,255,0.06);
+      --success:#22c55e;
+      --danger:#ef4444;
+      --max-width:1200px;
+      --rtl: 1;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071021 0%, #081021 60%, #071122 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      direction:rtl;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:60;background:linear-gradient(90deg, rgba(6,8,12,0.6), rgba(6,8,12,0.3));
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid var(--glass-border);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--max-width);margin:8px auto;padding:8px 20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:52px;height:52px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#032;box-shadow:0 6px 20px rgba(7,16,28,0.6);
+      font-size:20px;
+    }
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav .links{display:flex;gap:14px;align-items:center}
+    .links a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    .links a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#032}
+    .links a:hover{background:var(--glass);color:#fff}
+
+    /* Hero */
+    .hero{
+      padding:56px 0; display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:18px;padding:28px;border:1px solid var(--glass-border);
+      box-shadow:0 12px 40px rgba(2,6,23,0.6);
+      position:relative;overflow:hidden;
+    }
+    .hero h2{margin:0;font-size:30px;line-height:1.05}
+    .tag{color:var(--accent);font-weight:700;margin-top:8px}
+    .lead{color:var(--muted);margin-top:14px;font-size:15px;line-height:1.6}
+    .hero-cta{display:flex;gap:12px;margin-top:22px}
+    .btn{padding:12px 16px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(109,213,189,0.12)}
+    .btn.main{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#052;box-shadow:0 10px 30px rgba(34,197,94,0.08)}
+    .meta-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+    .chip{background:var(--glass);padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted);font-size:13px;border:1px solid rgba(255,255,255,0.02)}
+
+    /* right column */
+    .hero-side{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(13,22,33,0.6), rgba(8,12,18,0.6));border:1px solid var(--glass-border)}
+    .hero-side h3{margin:0 0 8px 0;font-size:16px}
+    .stat{display:flex;gap:12px;align-items:center;margin:10px 0}
+    .stat .num{font-size:20px;font-weight:800;color:var(--accent)}
+    .stat .desc{color:var(--muted);font-size:13px}
+
+    /* separators */
+    .separator{height:80px;width:100%;display:block}
+    .wave{display:block;width:100%;height:80px}
+
+    /* Sections */
+    section{padding:44px 0;border-top:1px solid rgba(255,255,255,0.02)}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+    .section-title h3{margin:0;font-size:20px}
+    .section-title p{margin:0;color:var(--muted)}
+
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .box{background:var(--card);padding:18px;border-radius:12px;border:1px solid var(--glass-border);box-shadow:0 6px 24px rgba(3,8,20,0.6)}
+    .box h4{margin:0 0 8px 0}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* cards slider */
+    .slider{
+      position:relative;
+      overflow:hidden;
+      border-radius:12px;
+      padding:12px 8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid var(--glass-border);
+    }
+    .cards{display:flex;gap:14px;overflow-x:auto;padding:8px;scroll-behavior:smooth;scroll-snap-type:x mandatory}
+    .card{min-width:260px;scroll-snap-align:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.03)}
+    .card h5{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    .slider-controls{display:flex;gap:8px;position:absolute;right:8px;top:8px}
+    .sbtn{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:8px;border-radius:8px;cursor:pointer}
+
+    /* team list */
+    .team{display:flex;gap:12px;flex-wrap:wrap}
+    .member{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);min-width:200px}
+    .member h6{margin:0 0 6px 0}
+    .member .role{font-size:13px;color:var(--muted)}
+
+    /* contact */
+    .contact-card{display:grid;grid-template-columns:1fr 300px;gap:16px}
+    .contact-info p{margin:8px 0;color:var(--muted)}
+    .mailto{display:inline-block;margin-top:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:12px;color:#042;font-weight:800;text-decoration:none}
+
+    /* footer */
+    footer{padding:18px 0;color:var(--muted);text-align:center;font-size:14px}
+
+    /* animations */
+    .fade-in{animation:fadeInUp .9s ease both}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding:28px 0}
+      .contact-card{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .container{padding:16px}
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="nav container">
+      <div class="brand">
+        <div class="logo">MF</div>
+        <div>
+          <h1>MycoFlair.ir</h1>
+          <p>تیم تحقیقاتی و توسعه مایکوفِلِر</p>
+        </div>
+      </div>
 
-  <!-- Language Switcher -->
-  <div class="lang-switcher">
-    <button onclick="setLang('fa')" aria-label="تغییر زبان به فارسی">فارسی</button>
-    <button onclick="setLang('en')" aria-label="Switch to English">EN</button>
-  </div>
-
-  <!-- Hero Section -->
-  <header class="hero" id="hero">
-    <div class="container">
-      <h1 class="hero-title">🔬 MycoNova | آینده پرورش قارچ در بسترهای مصنوعی</h1>
-      <p class="hero-subtitle">نوآوری در تغذیه میسلیوم – از زمین تا فضا</p>
-      <div class="hero-buttons">
-        <a href="#about" class="btn">درباره محصول</a>
-        <a href="#contact" class="btn">تماس با ما</a>
-        <a href="mailto:info@myconova.ir?subject=درخواست%20بروشور%20فنی&body=لطفا%20نسخه%20بروشور%20فنی%20MGF-01%20را%20ارسال%20فرمایید." class="btn btn-outline">دانلود بروشور فنی</a>
+      <div class="links" aria-hidden>
+        <a href="#about">درباره</a>
+        <a href="#advantages">مزیت‌ها</a>
+        <a href="#team">تیم</a>
+        <a class="cta" href="mailto:info@mycoflair.com">درخواست همکاری</a>
       </div>
     </div>
   </header>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title">معرفی مایکونووا</h2>
-      <div class="section-content">
-        <p>مایکونووا حاصل سال‌ها تحقیق و آزمایش در زمینه رشد قارچ در بسترهای مصنوعی و غیرآلی است.</p>
-        <p>فرمول انحصاری MGF-01، نخستین محلول مغذی با خاصیت ضدآلودگی است که می‌تواند رشد میسلیوم قارچ‌های خوراکی و دارویی را بدون نیاز به کمپوست یا محیط استریل، تنها بر روی بسترهایی مانند پشم‌سنگ، لیکا، پریلیت و پلی‌استر ممکن سازد.</p>
-        <p>این نوآوری، نقطه‌ آغازی برای نسل جدیدی از کشاورزی پایدار، کنترل‌شده و حتی کشاورزی فضایی است.</p>
-      </div>
-    </div>
-  </section>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card fade-in">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <h2>MycoFlair — Innovating the Future of Fungal Biotechnology</h2>
+            <div class="tag">«نوآوری در آینده‌ی زیست‌فناوری قارچ‌ها»</div>
+          </div>
+          <div style="text-align:left;color:var(--muted);font-size:13px">MGF-02</div>
+        </div>
 
-  <!-- Features Section -->
-  <section id="features" class="section bg-light">
-    <div class="container">
-      <h2 class="section-title">چرا MGF-01؟</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🚫</div>
-          <h3>ضد آلودگی قارچی و میکروبی</h3>
-          <p>رشد انتخابی میسلیوم بدون رقابت با کپک‌ها.</p>
+        <p class="lead">
+          فرمول <strong>MGF-02</strong> نسخه پیشرفته‌ای از پژوهش‌های ماست که رشد میسلیوم قارچ‌های خوراکی و دارویی را بر روی بسترهای مصنوعی و خنثی (پریلیت، لیکا، پشم‌سنگ، الیاف پلی‌استر و ...) بدون نیاز به کمپوست امکان‌پذیر می‌کند — همراه با خاصیت ضدآلودگی و پایداری بالا.
+        </p>
+
+        <div class="hero-cta">
+          <button class="btn main" onclick="location.href='#contact'">درخواست همکاری</button>
+          <button class="btn ghost" onclick="toggleLang()">EN / FA</button>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">💧</div>
-          <h3>کاهش مصرف آب و انرژی</h3>
-          <p>حذف فرآیندهای سنگین تولید کمپوست.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🧩</div>
-          <h3>سازگار با بسترهای مصنوعی</h3>
-          <p>پلی‌استر، پریلیت، پشم‌سنگ، لیکا و دیگر مواد خنثی.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🌿</div>
-          <h3>قابل استفاده در محیط‌های غیرخاکی</h3>
-          <p>برای کشاورزی شهری، بیابانی یا فضایی.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">♻️</div>
-          <h3>بازیافت‌پذیر و چندمرحله‌ای</h3>
-          <p>امکان کشت دوم و تبدیل بستر استفاده‌شده به خوراک دامی یا آبزی.</p>
+
+        <div class="meta-chips" aria-hidden>
+          <div class="chip">کشت بدون کمپوست</div>
+          <div class="chip">ضدآلودگی</div>
+          <div class="chip">کشاورزی فضایی</div>
+          <div class="chip">پسماند→خوراک دام</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Applications -->
-  <section id="applications" class="section">
-    <div class="container">
-      <h2 class="section-title">کاربردهای فرمول MGF-01</h2>
-      <div class="section-content">
-        <p>فرمول MGF-01 نه تنها در صنایع پرورش قارچ‌های خوراکی (دکمه‌ای، صدفی، گانودرما و...) کارایی دارد، بلکه می‌تواند به‌عنوان بستر تحقیقاتی در پروژه‌های زیر نیز مورد استفاده قرار گیرد:</p>
-        <ul>
-          <li>پژوهش‌های کشاورزی فضایی (ESA، NASA، Space Tango)</li>
-          <li>توسعه سیستم‌های تولید پایدار در محیط‌های کنترل‌شده (CEA)</li>
-          <li>تولید خوراک دامی از باقیمانده‌های کشت</li>
-          <li>آموزش و پژوهش در مراکز دانشگاهی</li>
+      <aside class="hero-side fade-in">
+        <h3>Executive Summary</h3>
+        <div class="stat">
+          <div class="num">MGF-02</div>
+          <div class="desc">محلول مغذی اختصاصی برای بسترهای غیرآلی</div>
+        </div>
+        <div class="stat">
+          <div class="num">شواهد میدانی</div>
+          <div class="desc">آزمایش موفق در خاک شبیه‌سازی‌شده‌ی ماه</div>
+        </div>
+        <div class="stat">
+          <div class="num">کاربرد</div>
+          <div class="desc">کشاورزی شهری، صنعتی و فضایی</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- separator wave -->
+    <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="rgba(7,12,20,0.6)" d="M0,64L1440,16L1440,80L0,80Z"></path></svg>
+
+    <!-- About / Abstract -->
+    <section id="about">
+      <div class="section-title">
+        <h3>معرفی و هدف پروژه — چکیده</h3>
+        <p>Executive Summary (Abstract)</p>
+      </div>
+
+      <div class="box fade-in">
+        <h4>عنوان طرح</h4>
+        <p class="muted">ساخت و توسعه فرمول <strong>MGF-02</strong> برای ساخت محلول مغذی اختصاصی جهت پرورش انواع قارچ‌های خوراکی و دارویی در بسترهای مصنوعی خنثی با قابلیت مقاومت در برابر آلودگی و بیماری‌های بستر کشت قارچ.</p>
+
+        <h4 style="margin-top:12px">خلاصه</h4>
+        <p class="muted" style="line-height:1.8">
+          فرمول MGF-01 حاصل چند سال تحقیق و آزمایش میدانی بر روی فرمولاسیون محلول‌مغذی برای پرورش قارچ است. هدف، ایجاد محیطی پایدار و خنثی برای رشد میسلیوم در انواع بسترهای آلی و غیرآلی نظیر پلی‌استر، لیکا، پریلیت، پشم‌سنگ و سایر مواد مصنوعی دیگر بوده است. این فناوری از مرحله ایده عبور کرده و به سطح «نمونه موفق» رسیده است.
+          <br><br>
+          نسخه‌ی اصلاح‌شده‌ی فرمول با نام <strong>MGF-02</strong> با هدف ایجاد خاصیت ضدآلودگی توسعه داده شد و مقاومت بالایی در برابر آلودگی‌های قارچی و میکروبی را نشان داد و توانست در محیط طبیعی و بدون تجهیزات استریلیزاسیون، از آلودگی به داخل بستر جلوگیری کند. همچنین آزمایش محدود و محرمانه در خاک شبیه‌سازی‌شده‌ی ماه با همکاری دانشگاه صنعتی شریف انجام شده و نتایج اولیه مثبت بوده است.
+        </p>
+      </div>
+    </section>
+
+    <!-- Problems -->
+    <section id="problems">
+      <div class="section-title">
+        <h3>مشکلات فعلی صنعت پرورش قارچ</h3>
+        <p>ضرورت به‌کارگیری MGF-02</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="box fade-in">
+          <h4>چالش‌ها</h4>
+          <ul class="muted" style="line-height:1.8;margin:8px 0 0 16px">
+            <li>نیاز بالای آب و فضای عملیاتی برای تولید کمپوست</li>
+            <li>آلودگی‌های قارچی و میکروبی در کمپوست سنتی</li>
+            <li>هزینه‌های تولید و ترابری سنگین</li>
+            <li>عدم‌قابلیت استفاده در محیط‌های فاقد خاک یا منابع زیستی</li>
+          </ul>
+        </div>
+
+        <div class="box fade-in">
+          <h4>چرا MGF-02؟</h4>
+          <p class="muted" style="line-height:1.6">
+            MGF-02 برای ایجاد بستر جایگزین مصنوعی، پایدار و کم‌هزینه طراحی شده است. این فرمول می‌تواند شیوه‌های کشت قارچ و همچنین مسیرهای نوین در کشاورزی فضایی را متحول سازد.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements slider -->
+    <section id="achievements">
+      <div class="section-title">
+        <h3>دستاوردهای کلیدی</h3>
+        <p>نتایج و شواهد</p>
+      </div>
+
+      <div class="slider fade-in" aria-hidden>
+        <div class="slider-controls">
+          <button class="sbtn" onclick="slidePrev()">◀</button>
+          <button class="sbtn" onclick="slideNext()">▶</button>
+        </div>
+
+        <div class="cards" id="cards">
+          <div class="card">
+            <h5>رشد کامل میسلیوم</h5>
+            <p class="muted">رشد میسلیوم قارچ دکمه‌ای و صدفی بر روی بسترهای غیرآلی بدون کمپوست.</p>
+          </div>
+          <div class="card">
+            <h5>برداشت محصول</h5>
+            <p class="muted">برداشت موفق محصول خوراکی و دارویی در آزمایش‌های میدانی.</p>
+          </div>
+          <div class="card">
+            <h5>کاهش مصرف آب</h5>
+            <p class="muted">کاهش چشمگیر مصرف آب و هزینه‌های تولید و ترابری.</p>
+          </div>
+          <div class="card">
+            <h5>مقاومت طبیعی</h5>
+            <p class="muted">قابلیت مقاومت در برابر قارچ‌های رقیب و کپک‌ها.</p>
+          </div>
+          <div class="card">
+            <h5>آزمایش ماه</h5>
+            <p class="muted">آزمایش موفق در خاک شبیه‌سازی شده‌ی ماه (همکاری دانشگاه صنعتی شریف).</p>
+          </div>
+          <div class="card">
+            <h5>خوراک دام از پسماند</h5>
+            <p class="muted">استفاده از پسماند جهت تولید خوراک غنی برای دام و ماهی.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantage -->
+    <section id="advantages">
+      <div class="section-title">
+        <h3>مزیت رقابتی MGF-02</h3>
+        <p>چرا فناوری ما متفاوت است</p>
+      </div>
+
+      <div class="box fade-in">
+        <ul class="muted" style="line-height:1.8;margin:8px 0 0 16px">
+          <li>ترکیب همزمان «محیط رشد، غذا و ضدآلودگی» در یک محصول واحد</li>
+          <li>قابل‌استفاده در پروژه‌های کشاورزی فضایی و تولید صنعتی</li>
+          <li>قابلیت حفاظت به‌عنوان راز تجاری (Trade Secret)</li>
+          <li>قابل‌استفاده برای گونه‌های مختلف قارچ خوراکی و دارویی</li>
+          <li>تبدیل پسماند بستر به خوراک غنی برای دام و ماهی</li>
         </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Results -->
-  <section id="results" class="section bg-light">
-    <div class="container">
-      <h2 class="section-title">از زمین تا فضا – تأیید عملکرد در محیط‌های غیرزمینی</h2>
-      <div class="section-content">
-        <p>فرمول MGF-01 در آزمایشی میدانی با همکاری یکی از اعضای دانشگاه صنعتی شریف، در خاک شبیه‌سازی‌شده ماه مورد آزمایش قرار گرفت و توانست رشد کامل میسلیوم را بدون آلودگی نشان دهد. این موفقیت، گامی مهم در توسعه فناوری‌های زیستی برای کشاورزی فضایی است.</p>
-        <a href="mailto:info@myconova.ir?subject=درخواست%20مستندات%20آزمایش&body=لطفا%20مستندات%20آزمایش%20MGF-01%20در%20خاک%20ماه%20را%20ارسال%20فرمایید." class="btn">مشاهده مستندات آزمایش</a>
+    <!-- Market -->
+    <section id="market">
+      <div class="section-title">
+        <h3>بازار هدف</h3>
+        <p>مخاطبان و فرصت‌ها</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Collaboration -->
-  <section id="collaboration" class="section">
-    <div class="container">
-      <h2 class="section-title">به ما بپیوندید</h2>
-      <div class="section-content">
-        <p>مایکونووا آماده‌ی همکاری با سرمایه‌گذاران، مراکز تحقیقاتی، شرکت‌های کشاورزی و صنایع تولید خوراک است تا این فناوری را به مرحله‌ی تولید صنعتی و جهانی برساند. برای دریافت اطلاعات محرمانه و نسخه‌ی فنی محصول، لطفاً از طریق فرم تماس اقدام نمایید.</p>
-        <div class="hero-buttons">
-          <a href="mailto:info@myconova.ir?subject=درخواست%20همکاری&body=علاقه‌مند%20به%20همکاری%20در%20پروژه‌های%20MGF-01%20هستم." class="btn">درخواست همکاری</a>
-          <a href="mailto:info@myconova.ir" class="btn btn-outline">تماس مستقیم</a>
+      <div class="grid-2">
+        <div class="box fade-in">
+          <h4>حجم بازار</h4>
+          <p class="muted">بازار جهانی قارچ‌های خوراکی و دارویی در سال ۲۰۲۴ بیش از ۶۰ میلیارد دلار ارزش‌گذاری شده و تا ۲۰۳۰ افزایش قابل توجهی خواهد داشت.</p>
+        </div>
+
+        <div class="box fade-in">
+          <h4>مشتریان بالقوه</h4>
+          <p class="muted">شرکت‌های تولید قارچ صنعتی، مراکز تحقیقاتی فضایی، تولیدکنندگان بستر و تولیدکنندگان خوراک دام و ماهی.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Gallery (Optional - Placeholder) -->
-  <section id="gallery" class="section bg-light">
-    <div class="container">
-      <h2 class="section-title">گالری تصاویر</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">📷 رشد میسلیوم</div>
-        <div class="gallery-item">📷 بستر آزمایشی (پشم‌سنگ)</div>
-        <div class="gallery-item">📷 قارچ برداشت‌شده</div>
+    <!-- Business model & IP -->
+    <section id="business">
+      <div class="section-title">
+        <h3>برنامه تجاری و مالکیت معنوی</h3>
+        <p>Business Model & IP</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer id="contact" class="footer">
-    <div class="container">
-      <p>© 2025 MycoNova | All rights reserved.</p>
-      <p>طراحی و توسعه توسط تیم تحقیقاتی MycoNova.</p>
-      <p>📧 <a href="mailto:info@myconova.ir">info@myconova.ir</a> | 🌐 <a href="https://myconova.ir" target="_blank" rel="noopener">www.myconova.ir</a></p>
-    </div>
-  </footer>
+      <div class="box fade-in">
+        <h4>مدل تجاری</h4>
+        <p class="muted">فروش تحت راز تجاری (Trade Secret Sale): فروش فرمول و دانش فنی به شرکت معتبر با NDA یا واگذاری حق بهره‌برداری محدود/انحصاری.</p>
 
-  <!-- Language Switching Logic -->
+        <h4 style="margin-top:12px">وضعیت مالکیت معنوی</h4>
+        <p class="muted">مستندات آزمایشگاهی و نتایج آمادهٔ ارائه تحت توافق محرمانگی هستند. مالکیت فکری در اختیار مجری پروژه است و قابلیت ثبت به‌عنوان اختراع ترکیب محرمانه را دارد.</p>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team">
+      <div class="section-title">
+        <h3>تیم اجرایی</h3>
+        <p>MycoFlair Research & Innovation Team</p>
+      </div>
+
+      <div class="team fade-in">
+        <div class="member">
+          <h6>ISMAEEL KHORSHIDI</h6>
+          <div class="role muted">مجری پروژه - پژوهشگر ارشد</div>
+        </div>
+        <div class="member">
+          <h6>SAEID KHORSHIDI</h6>
+          <div class="role muted">همکار پژوهشی</div>
+        </div>
+        <div class="member">
+          <h6>AMIR MARANDI</h6>
+          <div class="role muted">مدیر فنی</div>
+        </div>
+        <div class="member">
+          <h6>MASOOME KHANI</h6>
+          <div class="role muted">تحقیق و توسعه</div>
+        </div>
+        <div class="member">
+          <h6>محل انجام پروژه</h6>
+          <div class="role muted">IRAN (تیم تحقیقاتی مایکوفِلِر)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- collaboration request -->
+    <section id="contact">
+      <div class="section-title">
+        <h3>نیازمندی‌ها و پیشنهاد همکاری</h3>
+        <p>دعوت به همکاری و مذاکره</p>
+      </div>
+
+      <div class="contact-card fade-in">
+        <div class="box contact-info">
+          <h4>ما آماده‌ایم</h4>
+          <p class="muted">در فاز کنونی، پروژه آماده انتقال دانش فنی و مذاکره با سرمایه‌گذاران یا خریداران بالقوه است.</p>
+          <ul class="muted" style="line-height:1.8;margin:8px 0 0 16px">
+            <li>خرید کامل دانش فنی و فرمول</li>
+            <li>مشارکت تحقیق و توسعه (R&D Partnership)</li>
+            <li>تست میدانی مشترک و همکاری در پروژه‌های فضایی</li>
+          </ul>
+
+          <p class="muted" style="margin-top:10px">برای ارائه اطلاعات فنی محرمانه، لطفاً قبل از ارسال مدارک، NDA امضا نمایید.</p>
+
+          <p style="margin-top:12px"><strong>تماس مستقیم:</strong></p>
+          <p class="muted">ایمیل: <a class="mailto" href="mailto:info@mycoflair.com">info@mycoflair.com</a></p>
+          <p class="muted">تلفن: <a href="tel:+989123092855" class="muted">+98 912 309 2855</a> — AMIR MARANDI</p>
+        </div>
+
+        <div class="box" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+          <h4>ارسال سریع ایمیل محرمانه</h4>
+          <p class="muted" style="text-align:center">برای ارتباط سریع و محرمانه، دکمه زیر را بزنید — پنجره ایمیل شما باز خواهد شد.</p>
+          <a class="mailto" href="mailto:info@mycoflair.com?subject=Request%20for%20Confidential%20Discussion%20-%20MycoFlair&body=Hello%20MycoFlair%20team%2C%0A%0AI%20would%20like%20to%20discuss%20a%20confidential%20opportunity.%20Please%20let%20me%20know%20the%20next%20steps.%0A%0ARegards%2C%0A">درخواست همکاری محرمانه</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="muted">© 2025 MycoFlair Research & Innovation Team — All rights reserved.</div>
+      <div class="muted">info@mycoflair.com — +98 912 309 2855</div>
+    </footer>
+  </main>
+
   <script>
-    const translations = {
-      fa: {
-        title: "MycoNova | آینده پرورش قارچ در بسترهای مصنوعی",
-        desc: "فرمول انحصاری MGF-01 مایکونووا، نخستین محلول مغذی با خاصیت ضدآلودگی برای رشد قارچ بدون کمپوست و بدون استریل — از شهر تا فضا.",
-        heroTitle: "🔬 MycoNova | آینده پرورش قارچ در بسترهای مصنوعی",
-        heroSubtitle: "نوآوری در تغذیه میسلیوم – از زمین تا فضا",
-        btnProduct: "درباره محصول",
-        btnContact: "تماس با ما",
-        btnBrochure: "دانلود بروشور فنی",
-        aboutTitle: "معرفی مایکونووا",
-        featuresTitle: "چرا MGF-01؟",
-        appsTitle: "کاربردهای فرمول MGF-01",
-        resultsTitle: "از زمین تا فضا – تأیید عملکرد در محیط‌های غیرزمینی",
-        collabTitle: "به ما بپیوندید",
-        galleryTitle: "گالری تصاویر",
-        antiContam: "ضد آلودگی قارچی و میکروبی",
-        waterEnergy: "کاهش مصرف آب و انرژی",
-        synthetic: "سازگار با بسترهای مصنوعی",
-        soilless: "قابل استفاده در محیط‌های غیرخاکی",
-        recyclable: "بازیافت‌پذیر و چندمرحله‌ای",
-        btnReport: "مشاهده مستندات آزمایش",
-        btnCollab: "درخواست همکاری",
-        btnDirect: "تماس مستقیم"
-      },
-      en: {
-        title: "MycoNova | Redefining the Future of Mushroom Cultivation",
-        desc: "MGF-01 is the first anti-contamination nutrient solution enabling mushroom growth without compost or sterilization — from urban farms to space missions.",
-        heroTitle: "🔬 MycoNova | Redefining the Future of Mushroom Cultivation",
-        heroSubtitle: "Innovating Mycelium Nutrition — From Earth to Space",
-        btnProduct: "About MGF-01",
-        btnContact: "Contact",
-        btnBrochure: "Download Technical Brochure",
-        aboutTitle: "About MycoNova",
-        featuresTitle: "Why MGF-01?",
-        appsTitle: "Applications of MGF-01",
-        resultsTitle: "From Earth to Space – Validated in Lunar Simulant",
-        collabTitle: "Join the Revolution",
-        galleryTitle: "Gallery",
-        antiContam: "Anti-microbial and selective growth",
-        waterEnergy: "Reduced water and energy consumption",
-        synthetic: "Compatible with synthetic & inert media",
-        soilless: "Ideal for soil-free or extraterrestrial environments",
-        recyclable: "Recyclable – Dual-stage cultivation",
-        btnReport: "View Experimental Report",
-        btnCollab: "Collaboration Inquiry",
-        btnDirect: "Direct Contact"
+    // language toggle (simple content swap - expand later if needed)
+    let faMode = true;
+    function toggleLang(){
+      faMode = !faMode;
+      if(!faMode){
+        // switch to english minimal (replace key texts)
+        document.querySelector('h2').innerText = 'MycoFlair — Innovating the Future of Fungal Biotechnology';
+        document.querySelector('.tag').innerText = '"Innovating the Future of Fungal Biotechnology"';
+        document.querySelector('.brand h1').innerText = 'MycoFlair';
+        document.querySelector('.brand p').innerText = 'MycoFlair Research & Innovation Team';
+      } else {
+        document.querySelector('h2').innerText = 'MycoFlair — Innovating the Future of Fungal Biotechnology';
+        document.querySelector('.tag').innerText = '«نوآوری در آینده‌ی زیست‌فناوری قارچ‌ها»';
+        document.querySelector('.brand h1').innerText = 'MycoFlair.ir';
+        document.querySelector('.brand p').innerText = 'تیم تحقیقاتی و توسعه مایکوفِلِر';
       }
-    };
-
-    function setLang(lang) {
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
-
-      // Update page metadata
-      document.title = translations[lang].title;
-      document.querySelector('meta[name="description"]').content = translations[lang].desc;
-
-      // Update content
-      document.querySelector('.hero-title').textContent = translations[lang].heroTitle;
-      document.querySelector('.hero-subtitle').textContent = translations[lang].heroSubtitle;
-      document.querySelectorAll('.hero-buttons .btn')[0].textContent = translations[lang].btnProduct;
-      document.querySelectorAll('.hero-buttons .btn')[1].textContent = translations[lang].btnContact;
-      document.querySelectorAll('.hero-buttons .btn')[2].textContent = translations[lang].btnBrochure;
-
-      document.querySelector('#about .section-title').textContent = translations[lang].aboutTitle;
-      document.querySelector('#features .section-title').textContent = translations[lang].featuresTitle;
-      document.querySelector('#applications .section-title').textContent = translations[lang].appsTitle;
-      document.querySelector('#results .section-title').textContent = translations[lang].resultsTitle;
-      document.querySelector('#collaboration .section-title').textContent = translations[lang].collabTitle;
-      document.querySelector('#gallery .section-title').textContent = translations[lang].galleryTitle;
-
-      // Feature cards
-      const featureTexts = [
-        translations[lang].antiContam,
-        translations[lang].waterEnergy,
-        translations[lang].synthetic,
-        translations[lang].soilless,
-        translations[lang].recyclable
-      ];
-      document.querySelectorAll('.feature-card h3').forEach((el, i) => {
-        el.textContent = featureTexts[i];
-      });
-
-      // Buttons
-      document.querySelector('#results .btn').textContent = translations[lang].btnReport;
-      document.querySelectorAll('#collaboration .btn')[0].textContent = translations[lang].btnCollab;
-      document.querySelectorAll('#collaboration .btn')[1].textContent = translations[lang].btnDirect;
-
-      // Save preference
-      localStorage.setItem('myconova-lang', lang);
     }
 
-    // On load
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('myconova-lang') || 
-                    (navigator.language.startsWith('fa') ? 'fa' : 'en');
-      setLang(saved);
-    });
+    // Simple slider navigation
+    const cards = document.getElementById('cards');
+    function slideNext(){ cards.scrollBy({left:300,behavior:'smooth'}) }
+    function slidePrev(){ cards.scrollBy({left:-300,behavior:'smooth'}) }
+
+    // small accessibility: enable mailto links to open properly (no extra code needed)
+    // optional: prevent robots from scraping email (basic obfuscation example)
+    (function obf(){
+      const emailEls = document.querySelectorAll('a[href^="mailto:"]');
+      emailEls.forEach(a=>{
+        // no change for functionality: but we could optionally replace @ with text on page
+      })
+    })();
   </script>
 </body>
 </html>
