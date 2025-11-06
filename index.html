@@ -59,7 +59,7 @@
         .logo-placeholder {
             width: 60px;
             height: 60px;
-            background: url('1.jpg') center/cover no-repeat;
+            background: url('img/1.jpg') center/cover no-repeat;
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -136,7 +136,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('2.jpg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/2.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -215,7 +215,7 @@
             will-change: transform;
         }
         .card:hover, .team-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.03);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         .card-image, .team-card-image {
@@ -258,7 +258,7 @@
         }
         .team-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -316,7 +316,6 @@
             .site-title { font-size: 1.4rem; }
             .language-switch { padding: 0.5rem 1rem; font-size: 1rem; }
             .cards-container { grid-template-columns: 1fr; }
-            .team-cards { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
@@ -327,9 +326,6 @@
         [dir="rtl"] .mobile-menu {
             right: auto;
             left: 2rem;
-        }
-        [dir="rtl"] .section-title {
-            text-align: right;
         }
         [dir="rtl"] ul {
             margin-right: 2rem;
@@ -383,7 +379,7 @@
         <div class="section-content">
             <h2 class="section-title" id="about-title">Who Is MycoFlair and What Is Its Breakthrough?</h2>
             <div class="card">
-                <div class="card-image" style="background-image: url('3.jpg');"></div>
+                <div class="card-image" style="background-image: url('img/3.jpg');"></div>
                 <div class="card-content">
                     <p id="about-content1">MycoFlair Research & Innovation Team is a dedicated group of independent researchers specializing in controlled-environment agriculture and biomaterials science.</p>
                     <p id="about-content2">The team’s flagship product, the MGF-02 formula, represents the second generation of neutral, anti-contamination nutrient solutions—developed through iterative refinement and optimization of its predecessor, MGF-01.</p>
@@ -404,7 +400,7 @@
         <div class="section-content">
             <h2 class="section-title" id="challenges-title">Current Challenges in Mushroom Cultivation and Compost Production</h2>
             <div class="card">
-                <div class="card-image" style="background-image: url('4.jpg');"></div>
+                <div class="card-image" style="background-image: url('img/4.jpg');"></div>
                 <div class="card-content">
                     <p id="challenges-content1">The mushroom cultivation industry currently relies heavily on natural substrates and expensive, contamination-prone composts.</p>
                     <p id="challenges-content2">High production costs, excessive water consumption, and the persistent risk of fungal contamination are among the sector’s most critical challenges.</p>
@@ -423,7 +419,7 @@
         <div class="section-content">
             <h2 class="section-title" id="market-title">Target Market</h2>
             <div class="card">
-                <div class="card-image" style="background-image: url('5.jpg');"></div>
+                <div class="card-image" style="background-image: url('img/5.jpg');"></div>
                 <div class="card-content">
                     <p id="market-content1">The global market for edible and medicinal mushrooms was valued at over $60 billion in 2024 and is projected to exceed $100 billion by 2030.</p>
                     <p id="market-content2">Potential customers include:</p>
@@ -441,7 +437,7 @@
         <div class="section-content">
             <h2 class="section-title" id="ip-title">Intellectual Property (IP) Status:</h2>
             <div class="card">
-                <div class="card-image" style="background-image: url('6.jpg');"></div>
+                <div class="card-image" style="background-image: url('img/6.jpg');"></div>
                 <div class="card-content">
                     <p id="ip-content1">All laboratory documentation, reports, and mycelium performance data are available only under a Non-Disclosure Agreement (NDA).</p>
                     <p id="ip-content2">The final formula is maintained as a trade secret and is eligible for patenting its confidential chemical composition in target countries.</p>
@@ -454,7 +450,7 @@
         <div class="section-content">
             <h2 class="section-title" id="business-title">Our Business Model:</h2>
             <div class="card">
-                <div class="card-image" style="background-image: url('7.jpg');"></div>
+                <div class="card-image" style="background-image: url('img/7.jpg');"></div>
                 <div class="card-content">
                     <p id="business-content1">MycoFlair’s business model is based on trade-secret-based sales.</p>
                     <p id="business-content2">Technical know-how and formulation can be transferred to reputable companies and global investors under a confidentiality agreement.</p>
@@ -473,7 +469,7 @@
         <div class="section-content">
             <h2 class="section-title" id="team-title">اعضای تیم</h2>
             <div class="card">
-                <div class="card-image" style="background-image: url('8.jpg');"></div>
+                <div class="card-image" style="background-image: url('img/8.jpg');"></div>
                 <div class="card-content">
                     <h3 id="team-name">MycoFlair Research & Innovation Team</h3>
                     <p id="team-intro">The MycoFlair team comprises researchers and technologists with extensive experience in developing advanced biological and agricultural solutions, as well as next-generation space sciences.</p>
@@ -695,7 +691,7 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.style.animationDelay = `${0.1 + index * 0.1}s`;
-                card.innerHTML = `<div class="card-image" style="background-image: url('${3 + index}.jpg');"></div><div class="card-content"><p>• ${item}</p></div>`;
+                card.innerHTML = `<div class="card-image" style="background-image: url('img/${3 + index}.jpg');"></div><div class="card-content"><p>• ${item}</p></div>`;
                 container.appendChild(card);
             });
         }
@@ -707,7 +703,7 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.style.animationDelay = `${0.1 + index * 0.1}s`;
-                card.innerHTML = `<div class="card-image" style="background-image: url('${9 + index}.jpg');"></div><div class="card-content"><p>• ${item}</p></div>`;
+                card.innerHTML = `<div class="card-image" style="background-image: url('img/${9 + index}.jpg');"></div><div class="card-content"><p>• ${item}</p></div>`;
                 container.appendChild(card);
             });
         }
@@ -719,7 +715,7 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.style.animationDelay = `${0.1 + index * 0.1}s`;
-                card.innerHTML = `<div class="card-image" style="background-image: url('${12 + index}.jpg');"></div><div class="card-content"><p>• ${item}</p></div>`;
+                card.innerHTML = `<div class="card-image" style="background-image: url('img/${12 + index}.jpg');"></div><div class="card-content"><p>• ${item}</p></div>`;
                 container.appendChild(card);
             });
         }
@@ -731,7 +727,7 @@
                 const card = document.createElement('div');
                 card.className = 'team-card';
                 card.style.animationDelay = `${0.1 + index * 0.1}s`;
-                card.innerHTML = `<div class="team-card-image" style="background-image: url('${15 + index}.jpg');"></div><div class="team-card-content"><h4>${member.name}</h4><p>${member.title}</p></div>`;
+                card.innerHTML = `<div class="team-card-image" style="background-image: url('img/${15 + index}.jpg');"></div><div class="team-card-content"><h4>${member.name}</h4><p>${member.title}</p></div>`;
                 container.appendChild(card);
             });
         }
