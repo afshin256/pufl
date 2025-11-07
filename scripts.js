@@ -1,3 +1,344 @@
+```
+:root {
+    --primary-green: #4CAF50;
+    --light-green: #8BC34A;
+    --cream: #FFF8E1;
+    --light-yellow: #FFF3E0;
+    --dark-green: #2E7D32;
+    --text-dark: #2C3E50;
+    --text-light: #F5F5F5;
+    --shadow: 0 8px 32px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 20px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', 'Vazirmatn', sans-serif;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--light-yellow) 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+/* Header */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.left-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.right-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.logo-placeholder {
+    width: 60px;
+    height: 60px;
+    background: url('img/logo.png') center/cover no-repeat;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    aspect-ratio: 1/1; /* حفظ نسبت برای دایره ماندن */
+    flex-shrink: 0; /* جلوگیری از فشرده شدن */
+}
+.site-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--dark-green), var(--primary-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--text-dark);
+    margin: 4px 0;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+.language-switch {
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.language-switch:hover {
+    background: var(--dark-green);
+    transform: translateY(-2px);
+}
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 2rem;
+    background: white;
+    box-shadow: var(--shadow);
+    border-radius: 12px;
+    padding: 1rem;
+    z-index: 999;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 220px;
+    overflow: hidden;
+}
+.mobile-menu.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+.mobile-menu .nav-link {
+    padding: 0.8rem 1rem;
+    text-align: center;
+    border-radius: 8px;
+    width: 100%;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: var(--transition);
+}
+.mobile-menu .nav-link:hover {
+    background: var(--light-green);
+    color: white;
+}
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 80px;
+}
+.hero-content {
+    max-width: 900px;
+    padding: 2rem;
+    animation: slideUp 1s ease-out;
+}
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.hero h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-style: italic;
+}
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+/* Sections */
+.section {
+    padding: 7rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.section:nth-child(even) {
+    background: linear-gradient(135deg, var(--light-yellow) 0%, var(--cream) 100%);
+}
+.section:nth-child(odd):not(.hero) {
+    background: white;
+}
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--dark-green);
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--primary-green);
+    margin: 1rem auto 0;
+}
+/* Cards */
+.card, .team-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+    transition: var(--transition);
+    border: 2px solid var(--primary-green);
+    will-change: transform;
+}
+.card:hover, .team-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.card-image, .team-card-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    transition: var(--transition);
+}
+.card:hover .card-image, .team-card:hover .team-card-image {
+    transform: scale(1.05);
+}
+.team-card-image {
+    height: 240px;
+}
+.card-content, .team-card-content {
+    padding: 1.8rem;
+}
+.card h3, .team-card h4 {
+    color: var(--dark-green);
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+}
+.team-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+}
+.card p, .card li, .team-card p {
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+/* Team Section */
+.team-section {
+    background: linear-gradient(135deg, var(--light-yellow) 0%, var(--cream) 100%);
+}
+.team-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+    color: white;
+}
+.contact-info {
+    max-width: 700px;
+    margin: 3rem auto 0;
+    text-align: center;
+}
+.contact-info p {
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+#contact-intro {
+    color: #000 !important;
+}
+.contact-info p span,
+.contact-info p i {
+    color: #000 !important;
+    font-weight: 600;
+}
+/* Footer */
+.footer {
+    background: var(--dark-green);
+    color: white;
+    text-align: center;
+    padding: 3rem;
+    margin-top: 5rem;
+}
+.footer p {
+    margin: 0.6rem 0;
+    font-size: 1.1rem;
+}
+/* Animations */
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .section-title { font-size: 2rem; }
+    .header { padding: 1rem; }
+    .site-title { font-size: 1rem; } /* کوچکتر کردن عنوان */
+    .language-switch { padding: 0.5rem 1rem; font-size: 1rem; }
+    .cards-container { grid-template-columns: 1fr; }
+    .team-cards { grid-template-columns: 1fr; } /* یک ستونه در موبایل */
+    .right-nav { flex-direction: column-reverse; gap: 0.5rem; } /* همبرگر زیر سویچ زبان */
+    .logo-placeholder { width: 50px; height: 50px; aspect-ratio: 1/1; flex-shrink: 0; } /* حفظ دایره لوگو */
+}
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .section { padding: 5rem 1.5rem; }
+    .section-title { font-size: 1.8rem; }
+}
+/* RTL */
+[dir="rtl"] .mobile-menu {
+    right: auto;
+    left: 2rem;
+}
+[dir="rtl"] ul {
+    margin-right: 2rem;
+    margin-left: 0;
+}
+[dir="rtl"] .team-card-content {
+    text-align: right;
+}
+[dir="rtl"] body {
+    font-family: 'Vazirmatn', 'Roboto', sans-serif;
+}
+```
+
+### scripts.js (بدون تغییر) 
+(این فایل نیاز به تغییر نداشت، اما برای کامل بودن دوباره می‌دم)
+```
 const translations = {
     en: {
         siteTitle: "MycoFlair Research & Innovation Team",
@@ -189,7 +530,7 @@ const advantagesImages = {
         '8.jpg'
     ],
     fa: [
-        '3.jpg', // می‌تونی برای fa نام‌های فارسی بذاری اگر متفاوت هست
+        '3.jpg',
         'Reduced water and energy consumption, enhancing operational efficiency and sustainability.jpg',
         '5.jpg',
         '6.jpg',
@@ -391,3 +732,4 @@ languageSwitch.addEventListener('click', () => {
 });
 
 updateContent();
+```
